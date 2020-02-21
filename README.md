@@ -1,4 +1,6 @@
 # Calculadora-IMC
 Destinado aos alunos de Computação.
 
-![image](https://user-images.githubusercontent.com/11165597/75003829-f353fb80-5447-11ea-8dc5-da1ff5b022ba.png)
+Tela
+
+![image](https://user-images.githubusercontent.com/11165597/75003878-1d0d2280-5448-11ea-808d-7dfb8f30994e.png)
