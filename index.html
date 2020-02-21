@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora IMC</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #FFFFFF;
+            font-family: Roboto, Arial, Helvetica, sans-serif;
+        }
+
+        .fundo2 {
+            position: absolute;
+            width: 100%;
+            height: 540px;
+            left: 0px;
+            top: 0px;
+            background: linear-gradient(180deg, rgb(191, 94, 255) 0%, rgba(255, 255, 255, 0) 100%), #615EFF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 0px 0px 20px 20px;
+        }
+
+        .titulo {
+            margin-top: 48px;
+            position: absolute;
+            height: 23px;
+            left: 90px;
+            right: 90px;
+            top: calc(40% - 23px/2 - 284.5px);
+            font-style: normal;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 23px;
+            text-align: center;
+            color: #FFFFFF;
+
+        }
+
+        .sub-resultado {
+            margin-top: 320px;
+            position: absolute;
+            height: 23px;
+            left: 90px;
+            right: 90px;
+            top: calc(40% - 23px/2 - 284.5px);
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 23px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .resultado {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            left: 28%;
+            top: 110px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+
+        .resultado span {
+            position: absolute;
+            width: 73px;
+            height: 75px;
+            left: 32px;
+            top: 53px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 64px;
+            line-height: 75px;
+            text-align: center;
+            color: #615EFF;
+
+        }
+
+        .form {
+            position: absolute;
+            width: 92%;
+            height: 407px;
+            top: 340px;
+            margin-left: 16px;
+        }
+
+        .form label {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 25px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .input-text {
+            display: block;
+            width: 100%;
+            height: 46px;
+            background: rgb(252, 252, 252);
+            border: 1px solid #E5E5E5;
+            box-sizing: border-box;
+            margin-top: 8px;
+            border-radius: 8px;
+            font-size: 23px;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1.5rem;
+        }
+
+        .altura {
+            width: 100%;
+        }
+
+        .peso {
+            width: 100%;
+        }
+
+        .idade {
+            width: 100%;
+        }
+
+        .btn {
+            width: 100%;
+            height: 56px;
+            left: 17px;
+            background: #615EFF;
+            border-radius: 18px;
+            margin-top: 20%;
+        }
+
+        .calcular {
+            color: #FFFFFF;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 23px;
+            text-align: center;
+            margin-top: 43px;
+            padding-top: 17px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="fundo2"></div>
+    <div class="titulo">Calculadora IMC</div>
+    <div class="resultado"><span id="imc">00,0</span></div>
+    <div class="sub-resultado" id="sub-resultado"></div>
+
+
+    <div class="form">
+        <div class="grid">
+            <label class="altura">Altura</label><br>
+            <input class="input-text" type="text" value="1.80" name="altura" id="altura">
+        </div>
+        <br>
+        <div class="grid">
+            <label class="peso">Peso</label><br>
+            <input class="input-text" type="text" value="80" name="peso" id="peso">
+        </div>
+
+        <div class="btn" onclick="calcular();">
+            <div class="calcular">CALCULAR</div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    function calcular() {
+
+        var altura = parseFloat(document.getElementById("altura").value);
+        var peso = parseFloat(document.getElementById("peso").value);
+
+        var quadrado = parseFloat(altura * altura);
+        var imc = parseFloat((peso / quadrado).toFixed(1));
+        var sub_resultado = "";
+
+
+        if (imc < 18.5) {
+            sub_resultado = "Abaixo do peso normal";
+        }
+
+        if (imc > 18.5 && imc <= 24.9) {
+            sub_resultado = "Peso normal";
+        }
+
+        if (imc > 25.0 && imc <= 29.9) {
+            sub_resultado = "Excesso de peso";
+        }
+
+        if (imc > 30.0 && imc <= 34.9) {
+            sub_resultado = "Obesidade classe 1";
+        }
+
+        if (imc > 35.0 && imc <= 39.9) {
+            sub_resultado = "Obesidade classe 2";
+        }
+
+        if (imc > 40.0) {
+            sub_resultado = "Obesidade classe 3";
+        }
+
+        document.getElementById("imc").innerText = imc;
+        document.getElementById("sub-resultado").innerText = sub_resultado;
+
+    }
+
+</script>
+
+</html>
